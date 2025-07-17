@@ -9,4 +9,6 @@ const AdminDashboard = () => {
 
   useEffect(() => {
     dispatch(getReports());
-  }, [dispatch]);
+  }, [dispatch]);}
+
+  
