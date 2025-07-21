@@ -1,0 +1,76 @@
+.health-check {
+  max-width: 800px;
+  margin: 2rem auto;
+  padding: 2rem;
+  background: white;
+  border-radius: 16px;
+  box-shadow: var(--card-shadow);
+}
+
+.health-check h1 {
+  color: var(--primary-dark);
+  margin-bottom: 2rem;
+  position: relative;
+  padding-bottom: 0.5rem;
+}
+
+.health-check h1::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 60px;
+  height: 4px;
+  background: linear-gradient(to right, var(--primary), var(--secondary));
+  border-radius: 2px;
+}
+
+.health-status {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+  gap: 1.5rem;
+}
+
+.status-card {
+  background: white;
+  padding: 1.5rem;
+  border-radius: 12px;
+  box-shadow: var(--card-shadow);
+  text-align: center;
+  transition: var(--transition);
+  border-top: 4px solid transparent;
+}
+
+.status-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+}
+
+.status-card.online {
+  border-top-color: var(--success);
+}
+
+.status-card.offline {
+  border-top-color: var(--danger);
+}
+
+.status-card h3 {
+  margin: 0 0 0.5rem 0;
+  color: var(--dark);
+}
+
+.status-card p {
+  margin: 0;
+  font-size: 0.9rem;
+  color: var(--gray);
+}
+
+.status-icon {
+  font-size: 2.5rem;
+  margin-bottom: 1rem;
+  color: var(--success);
+}
+
+.status-card.offline .status-icon {
+  color: var(--danger);
+}

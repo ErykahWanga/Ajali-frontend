@@ -1,0 +1,188 @@
+/* Modern Map.css with Glassmorphism and Animations */
+:root {
+  --map-primary: #4361ee;
+  --map-primary-light: rgba(67, 97, 238, 0.15);
+  --map-accent: #4cc9f0;
+  --map-dark: #1a1a2e;
+  --map-light: #f8f9fa;
+  --map-success: #4caf50;
+  --map-warning: #ff9800;
+  --map-danger: #f44336;
+  --map-glass: rgba(255, 255, 255, 0.25);
+  --map-glass-border: rgba(255, 255, 255, 0.3);
+  --map-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+}
+
+/* Base Map Container */
+.map-container {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  border-radius: 16px;
+  overflow: hidden;
+  transform: translateZ(0);
+  box-shadow: var(--map-shadow);
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.1);
+}
+
+.map-container:hover {
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.15);
+}
+
+/* Google Maps Custom Overrides */
+.gm-style {
+  font-family: 'Inter', system-ui, sans-serif !important;
+}
+
+.gm-ui-hover-effect {
+  background-color: var(--map-primary) !important;
+  border-radius: 50% !important;
+  padding: 6px !important;
+}
+
+/* Modern Info Window */
+.gm-style .gm-style-iw-c {
+  border-radius: 16px !important;
+  padding: 0 !important;
+  box-shadow: var(--map-shadow) !important;
+  backdrop-filter: blur(10px);
+  background: var(--map-glass) !important;
+  border: 1px solid var(--map-glass-border) !important;
+  overflow: hidden !important;
+}
+
+.info-window {
+  padding: 1.25rem;
+  min-width: 280px;
+  color: var(--map-dark);
+}
+
+.info-window h3 {
+  margin: 0 0 0.75rem;
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: var(--map-primary);
+  position: relative;
+  padding-bottom: 0.5rem;
+}
+
+.info-window h3::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 40px;
+  height: 3px;
+  background: linear-gradient(90deg, var(--map-primary), var(--map-accent));
+  border-radius: 3px;
+}
+
+.info-window p {
+  margin: 0 0 1rem;
+  line-height: 1.6;
+  font-size: 0.95rem;
+}
+
+/* Status Tags with Glow Effect */
+.status-tag {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.4rem 1rem;
+  border-radius: 100px;
+  font-size: 0.8rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
+}
+
+.status-tag::before {
+  content: '';
+  display: inline-block;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  margin-right: 8px;
+  background: currentColor;
+  box-shadow: 0 0 8px currentColor;
+}
+
+.status-tag.reported {
+  background: var(--map-warning);
+  color: white;
+}
+
+.status-tag.under_investigation {
+  background: var(--map-primary);
+  color: white;
+}
+
+.status-tag.resolved {
+  background: var(--map-success);
+  color: white;
+}
+
+/* Custom Map Controls */
+.gm-control-active {
+  background: var(--map-glass) !important;
+  backdrop-filter: blur(5px);
+  border: 1px solid var(--map-glass-border) !important;
+  border-radius: 8px !important;
+  box-shadow: var(--map-shadow) !important;
+  width: 36px !important;
+  height: 36px !important;
+  margin: 8px !important;
+  transition: all 0.3s ease !important;
+}
+
+.gm-control-active:hover {
+  background: var(--map-primary-light) !important;
+  transform: scale(1.1) !important;
+}
+
+/* Zoom Controls Container */
+.gmnoprint.gm-bundled-control {
+  top: 20px !important;
+  right: 20px !important;
+}
+
+/* Marker Animation */
+.gm-style-iw-t::after {
+  background: var(--map-glass) !important;
+  backdrop-filter: blur(5px) !important;
+}
+
+/* Pulse Animation for Active Marker */
+@keyframes pulse {
+  0% { transform: scale(1); box-shadow: 0 0 0 0 rgba(67, 97, 238, 0.7); }
+  70% { transform: scale(1.05); box-shadow: 0 0 0 10px rgba(67, 97, 238, 0); }
+  100% { transform: scale(1); box-shadow: 0 0 0 0 rgba(67, 97, 238, 0); }
+}
+
+.active-marker {
+  animation: pulse 1.5s infinite;
+}
+
+/* Modern Scrollbar for Info Window */
+.gm-style-iw-d::-webkit-scrollbar {
+  width: 6px;
+}
+
+.gm-style-iw-d::-webkit-scrollbar-thumb {
+  background: var(--map-primary);
+  border-radius: 3px;
+}
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+  .map-container {
+    border-radius: 0;
+    height: 60vh;
+  }
+  
+  .info-window {
+    min-width: 220px;
+    padding: 1rem;
+  }
+}
